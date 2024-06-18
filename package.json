@@ -27,7 +27,8 @@
     "prettier": "npx prettier --check src",
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "test": "cross-shell node --import tsx --env-file=.env --test ./test/*.ts"
+    "test": "cross-shell node --import tsx --env-file=.env --test ./test/*.ts",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
