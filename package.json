@@ -1,6 +1,6 @@
 {
   "name": "zdns",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "type": "module",
   "author": "Donghua Liu <liudonghua123@gmail.com> (https://liudonghua.com/)",
