@@ -15,9 +15,9 @@ import {
 } from "./types.js";
 import { make_basic_auth } from "./util.js";
 
-const agent = new https.Agent({
-  rejectUnauthorized: false,
-});
+// disable SSL verification
+// see also https://github.com/axios/axios/issues/535
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 /**
  * 查询共享区记录
@@ -39,7 +39,6 @@ export async function shared_rrs_get(
           "Content-Type": "application/json",
         },
         data: input,
-        httpsAgent: agent,
       },
     );
     if (response.status !== 200) {
@@ -72,7 +71,6 @@ export async function shared_rrs_post(
           Authorization: make_basic_auth({ app_username, app_password }),
           "Content-Type": "application/json",
         },
-        httpsAgent: agent,
       },
     );
     if (response.status !== 200) {
@@ -105,7 +103,6 @@ export async function shared_rrs_put(
           Authorization: make_basic_auth({ app_username, app_password }),
           "Content-Type": "application/json",
         },
-        httpsAgent: agent,
       },
     );
     if (response.status !== 200) {
@@ -138,7 +135,6 @@ export async function shared_rrs_delete(
           "Content-Type": "application/json",
         },
         data: input,
-        httpsAgent: agent,
       },
     );
     if (response.status !== 200) {
