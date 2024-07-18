@@ -131,3 +131,6 @@ dist
 
 # typedoc
 docs/
+
+# ignore the build directory when pushed to cvs
+lib/
