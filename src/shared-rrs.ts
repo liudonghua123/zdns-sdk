@@ -11,12 +11,9 @@ import {
   SHARED_RRS_UPDATE_REPONSE,
   SHARED_RRS_DELETE_REQUEST,
   SHARED_RRS_DELETE_REPONSE,
+  AUTH_INPUT,
 } from "./types.js";
 import { make_basic_auth } from "./util.js";
-
-const base_url = process.env.BASE_URL!;
-const app_username = process.env.APP_USERNAME!;
-const app_password = process.env.APP_PASSWORD!;
 
 const agent = new https.Agent({
   rejectUnauthorized: false,
@@ -31,6 +28,7 @@ const agent = new https.Agent({
 export async function shared_rrs_get(
   input: SHARED_RRS_QUERY_REQUEST,
   shared_zone_id: string = "17044221796317",
+  { app_username, app_password, base_url }: AUTH_INPUT = { app_username: process.env.APP_USERNAME!, app_password: process.env.APP_PASSWORD!, base_url: process.env.BASE_URL! },
 ) {
   try {
     const response = await axios.get(
@@ -63,6 +61,7 @@ export async function shared_rrs_get(
 export async function shared_rrs_post(
   input: SHARED_RRS_CREATE_REQUEST,
   shared_zone_id: string = "17044221796317",
+  { app_username, app_password, base_url }: AUTH_INPUT = { app_username: process.env.APP_USERNAME!, app_password: process.env.APP_PASSWORD!, base_url: process.env.BASE_URL! },
 ) {
   try {
     const response = await axios.post(
@@ -95,6 +94,7 @@ export async function shared_rrs_post(
 export async function shared_rrs_put(
   input: SHARED_RRS_UPDATE_REQUEST,
   shared_zone_id: string = "17044221796317",
+  { app_username, app_password, base_url }: AUTH_INPUT = { app_username: process.env.APP_USERNAME!, app_password: process.env.APP_PASSWORD!, base_url: process.env.BASE_URL! },
 ) {
   try {
     const response = await axios.put(
@@ -127,6 +127,7 @@ export async function shared_rrs_put(
 export async function shared_rrs_delete(
   input: SHARED_RRS_DELETE_REQUEST,
   shared_zone_id: string = "17044221796317",
+  { app_username, app_password, base_url }: AUTH_INPUT = { app_username: process.env.APP_USERNAME!, app_password: process.env.APP_PASSWORD!, base_url: process.env.BASE_URL! },
 ) {
   try {
     const response = await axios.delete(
